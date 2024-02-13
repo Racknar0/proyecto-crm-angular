@@ -1,0 +1,68 @@
+<div class="table_container p-4">
+  <p class="text-center mt-4 fw-bold">LISTADO DE PROFESORES</p>
+
+  <a
+    mat-raised-button
+    color="primary"
+    class="d-flex align-items-center justify-content-center m-auto mt-4 mb-4 w-75"
+    routerLink="/dashboard/teacher-form"
+  >
+    <mat-icon>add</mat-icon>
+    Registrar Profesor
+  </a>
+  <div class="table-responsive">
+    <table mat-table class="mat-elevation-z8" [dataSource]="teachers">
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="apellido">
+        <th mat-header-cell *matHeaderCellDef>Apellido</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.apellido }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edad">
+        <th mat-header-cell *matHeaderCellDef>Edad</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.edad }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="especialidad">
+        <th mat-header-cell *matHeaderCellDef>Especialidad</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.especialidad }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-button
+            [routerLink]="['/dashboard/teacher-form', element.id]"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-button (click)="deleteTeacher(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

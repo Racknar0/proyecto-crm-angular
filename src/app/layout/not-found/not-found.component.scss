@@ -1,0 +1,14 @@
+.main_container {
+  background-color: rgb(222, 252, 209);
+
+  .error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .error-message {
+    text-align: center;
+  }
+}
+

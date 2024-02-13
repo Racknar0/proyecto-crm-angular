@@ -1,2 +1,41 @@
-<app-navbar></app-navbar>
+<!--<app-navbar></app-navbar>
+-->
+
+<mat-drawer-container class="nav_container" autosize>
+  <mat-drawer #drawer class="sidenav_container" mode="side">
+    <p class="fw-bold text-center">Menu</p>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard" (click)="drawer.toggle()">Dashboard</a>
+      <a mat-list-item routerLink="/dashboard/student-form" (click)="drawer.toggle()">Registrar Estudiante</a>
+      <a mat-list-item routerLink="/dashboard/courses" (click)="drawer.toggle()">Lista de cursos</a>
+      <a mat-list-item routerLink="/dashboard/course-form" (click)="drawer.toggle()">Registrar Cursos</a>
+      <a mat-list-item routerLink="/dashboard/teachers" (click)="drawer.toggle()">Lista de profesores</a>
+      <a mat-list-item routerLink="/dashboard/teacher-form" (click)="drawer.toggle()">Registrar Profesores</a>
+
+
+    </mat-nav-list>
+
+  </mat-drawer>
+
+  <div class="content_container">
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>App Registro</span>
+      <span class="example-spacer"></span>
+
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <div class="content_drawer">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</mat-drawer-container>
 

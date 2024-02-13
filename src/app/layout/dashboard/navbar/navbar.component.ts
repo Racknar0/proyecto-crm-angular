@@ -28,7 +28,6 @@ export class NavbarComponent {
       fullName: { nombre: 'Camilo Eduardo', apellido: 'Torres Perez' },
       correo: 'camilo@correo.com',
       telefono: '3233642951',
-      nota: '6',
       curso: '10',
     },
     {
@@ -38,7 +37,6 @@ export class NavbarComponent {
       fullName: { nombre: 'Juan Carlos', apellido: 'Alvarez Alvarez' },
       correo: 'juan@correo.com',
       telefono: '3233642951',
-      nota: '6',
       curso: '8',
     },
     {
@@ -48,7 +46,6 @@ export class NavbarComponent {
       fullName: { nombre: 'Pedro Jose', apellido: 'Gomez Acevedo' },
       correo: 'pedro@correo.com',
       telefono: '3233642951',
-      nota: '6',
       curso: '9',
     },
   ];

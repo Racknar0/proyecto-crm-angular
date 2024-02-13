@@ -1,0 +1,29 @@
+<h3 mat-dialog-title class="text-center mt-4">Curso</h3>
+<div
+  mat-dialog-content
+  class="d-flex justify-content-between flex-column p-2"
+  fxLayout="row"
+  fxLayoutAlign="space-between"
+>
+  <p>
+    <span class="fw-bold">Nombre Curso:</span> {{ data.nombre }}
+  </p>
+  <p>
+    <span class="fw-bold">Descripcion:</span> {{ data.descripcion }}
+  </p>
+  <p>
+    <span class="fw-bold">Duracion:</span> {{ data.duracion }} Hrs
+  </p>
+  <p>
+    <span class="fw-bold">Profesor:</span> {{ data.profesor.nombre }}
+  </p>
+  <p>
+    <span class="fw-bold">Fecha Inicio:</span> {{ data.fechaInicio | date }}
+  </p>
+  <p>
+    <span class="fw-bold">Fecha Fin:</span> {{ data.fechaFin | date }}
+  </p>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-center mt-auto mb-3">
+  <button mat-button (click)="onClose()">Cerrar</button>
+</div>
