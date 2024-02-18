@@ -1,18 +1,24 @@
-.main_container {
-  background-color: rgb(222, 252, 209);
+.login-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: indigo;
 
-  .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .login-form {
-    max-width: 400px;
-    width: 100%;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  .login-card{
+      width: 400px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+      button {
+         width: 100%;
+          padding: 10px;
+          height: 40px;
+          border-radius: 5px;
+          background-color: indigo;
+          color: white;
+      }
   }
 }

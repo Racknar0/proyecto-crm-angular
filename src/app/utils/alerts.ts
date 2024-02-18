@@ -18,5 +18,18 @@ export const confirmButtonAlert = (title : string, text : string, icon : any, co
         showCancelButton,
     })
 
+export const simpleAlert = (title : string, text : string, icon : any) =>
+    swal.fire({
+        title,
+        text,
+        icon,
+    })
 
-
+export const simpleAlertWithTimer = (title : string, text : string, icon : any, timer : number) =>
+    swal.fire({
+        title,
+        text,
+        icon,
+        timer,
+        showConfirmButton: false
+    })

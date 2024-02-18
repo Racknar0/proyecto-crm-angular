@@ -6,7 +6,8 @@
       "lastName": "Garcia",
       "email": "carlos@correo.com",
       "password": "123456",
-      "role": "admin"
+      "role": "admin",
+      "token": "g0qaxyc8ruk"
     },
     {
       "id": "2",
@@ -14,7 +15,8 @@
       "lastName": "Perez",
       "email": "Juan@correo.com",
       "password": "123456",
-      "role": "user"
+      "role": "user",
+      "token": ""
     }
   ],
   "students": [
@@ -409,6 +411,13 @@
       "apellido": "Flores",
       "edad": 50,
       "especialidad": "literatura"
+    },
+    {
+      "id": "bb4e",
+      "nombre": "AAAAAAAAAAAA",
+      "apellido": "Sint corru",
+      "edad": 57,
+      "especialidad": "astronomia"
     }
   ],
   "courses": [

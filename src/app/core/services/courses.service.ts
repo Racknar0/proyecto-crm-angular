@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Course } from '../interfaces/courses.interface';
+import { Course } from '../../interfaces/courses.interface';
 import { Observable, debounce, debounceTime, delay, of, tap, switchMap } from 'rxjs';
 import { LoaderService } from './loader.service';
 import { HttpClient } from '@angular/common/http';

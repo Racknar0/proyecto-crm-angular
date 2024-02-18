@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Profesor } from '../interfaces/profesor.interface';
+import { Profesor } from '../../interfaces/profesor.interface';
 import { Observable, debounce, debounceTime, delay, of, switchMap, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

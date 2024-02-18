@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Student } from '../interfaces/student.inteface';
+import { Student } from '../../interfaces/student.inteface';
 import {
   Observable,
   debounce,

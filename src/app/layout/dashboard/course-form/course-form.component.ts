@@ -1,10 +1,10 @@
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { confirmButtonAlert, simpleButtonAlert } from '../../../utils/alerts';
-import { CoursesService } from '../../../services/courses.service';
-import { LoaderService } from '../../../services/loader.service';
+import { CoursesService } from '../../../core/services/courses.service';
+import { LoaderService } from '../../../core/services/loader.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TeachersService } from '../../../services/teachers.service';
+import { TeachersService } from '../../../core/services/teachers.service';
 import { Profesor } from '../../../interfaces/profesor.interface';
 
 @Component({

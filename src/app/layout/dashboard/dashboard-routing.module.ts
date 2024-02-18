@@ -2,58 +2,60 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
-import { StudentListComponent } from './student-list/student-list.component';
-import { StudentFormComponent } from './student-form/student-form.component';
-import { TeacherListComponent } from './teacher-list/teacher-list.component';
-import { TeacherFormComponent } from './teacher-form/teacher-form.component';
-import { CourseListComponent } from './course-list/course-list.component';
-import { CourseFormComponent } from './course-form/course-form.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
     children: [
       {
         path: '',
-        component: StudentListComponent,
+        // component: StudentListComponent,
+        loadChildren: () => import('./student-list/student-list.module').then((m) => m.StudentListModule),
       },
       {
         path: 'students',
-        component: StudentListComponent,
+        // component: StudentListComponent,
+        loadChildren: () => import('./student-list/student-list.module').then((m) => m.StudentListModule),
       },
       {
         path: 'student-form',
-        component: StudentFormComponent,
+        //component: StudentFormComponent,
+        loadChildren: () => import('./student-form/student-form.module').then((m) => m.StudentFormModule),
       },
       {
         path: 'student-form/:id',
-        component: StudentFormComponent,
+        // component: StudentFormComponent,
+        loadChildren: () => import('./student-form/student-form.module').then((m) => m.StudentFormModule),
       },
       {
         path: 'teachers',
-        component: TeacherListComponent,
+        // component: TeacherListComponent,
+        loadChildren: () => import('./teacher-list/teacher-list.module').then((m) => m.TeacherListModule),
       },
       {
         path: 'teacher-form',
-        component: TeacherFormComponent,
+        //component: TeacherFormComponent,
+        loadChildren: () => import('./teacher-form/teacher-form.module').then((m) => m.TeacherFormModule),
       },
       {
         path: 'teacher-form/:id',
-        component: TeacherFormComponent,
+        // component: TeacherFormComponent,
+        loadChildren: () => import('./teacher-form/teacher-form.module').then((m) => m.TeacherFormModule),
       },
       {
         path: 'courses',
-        component: CourseListComponent,
+        // component: CourseListComponent,
+        loadChildren: () => import('./course-list/course-list.module').then((m) => m.CourseListModule),
       },
       {
         path: 'course-form',
-        component: CourseFormComponent,
+        // component: CourseFormComponent,
+        loadChildren: () => import('./course-form/course-form.module').then((m) => m.CourseFormModule),
       },
       {
         path: 'course-form/:id',
-        component: CourseFormComponent,
+        // component: CourseFormComponent,
+        loadChildren: () => import('./course-form/course-form.module').then((m) => m.CourseFormModule),
       },
     ],
   },

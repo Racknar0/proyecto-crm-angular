@@ -1,19 +1,36 @@
-<div class="main_container">
-  <div class="login-container">
-    <form class="login-form">
-      <h2 class="mb-4">Iniciar Sesión</h2>
-      <div class="form-group">
-        <label for="username">Usuario</label>
-        <input type="text" class="form-control" id="username" placeholder="Ingrese su usuario">
-      </div>
-      <div class="form-group">
-        <label for="password">Contraseña</label>
-        <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
-      </div>
-      <a class="btn btn-primary btn-block mt-4"
-      routerLink="/dashboard"
-      >Iniciar Sesión</a>
-    </form>
-  </div>
-</div>
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h1>Login</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
+        class="d-flex flex-column"
+      >
+        <mat-form-field class="w-100">
+          <input
+            matInput
+            placeholder="Email"
+            required
+            formControlName="email"
+          />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input
+            matInput
+            placeholder="Password"
+            required
+            formControlName="password"
+          />
 
+        </mat-form-field>
+        <button class="btn_submit mt-2" class="w-100" type="submit">Login</button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

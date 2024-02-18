@@ -15,6 +15,8 @@ import {MatListModule} from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
+import {MatCardModule} from '@angular/material/card';
+
 
 // SPINNER
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -37,6 +39,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
+    MatCardModule
   ],
   providers: [
     provideNativeDateAdapter(),

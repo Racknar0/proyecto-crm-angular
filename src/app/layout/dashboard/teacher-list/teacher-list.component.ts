@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Profesor } from '../../../interfaces/profesor.interface';
-import { TeachersService } from '../../../services/teachers.service';
-import { LoaderService } from '../../../services/loader.service';
+import { TeachersService } from '../../../core/services/teachers.service';
+import { LoaderService } from '../../../core/services/loader.service';
 
 @Component({
   selector: 'app-teacher-list',
@@ -16,7 +16,10 @@ export class TeacherListComponent implements OnInit {
   constructor(
     private teachersService: TeachersService,
     private loadingService: LoaderService
-  ) { }
+  ) {
+    console.log('TeacherListComponent.constructor');
+
+   }
 
   ngOnInit(): void {
     this.getTeachers();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../../../interfaces/courses.interface';
-import { CoursesService } from '../../../services/courses.service';
-import { LoaderService } from '../../../services/loader.service';
+import { CoursesService } from '../../../core/services/courses.service';
+import { LoaderService } from '../../../core/services/loader.service';
 
 
 
