@@ -5,18 +5,25 @@ import { LoaderService } from '../../../services/loader.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { CoursesService } from '../../../services/courses.service';
-import { map } from 'rxjs';
+import { forkJoin, map } from 'rxjs';
 import { Course } from '../../../interfaces/courses.interface';
-
-
 
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
-  styleUrl: './student-list.component.scss'
+  styleUrl: './student-list.component.scss',
 })
 export class StudentListComponent implements OnInit {
-  displayedColumns: string[] = [ 'id', 'nombre', 'apellido', 'fullName', 'correo', 'telefono', 'curso', 'acciones' ];
+  displayedColumns: string[] = [
+    'id',
+    'nombre',
+    'apellido',
+    'fullName',
+    'correo',
+    'telefono',
+    'curso',
+    'acciones',
+  ];
   students: Student[] = [];
   coursesList: Course[] = [];
 
@@ -25,42 +32,29 @@ export class StudentListComponent implements OnInit {
     private loadingService: LoaderService,
     private courseService: CoursesService,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.getStudents();
-    this.getCourses();
+    this.getData();
   }
 
-  getStudents(): void {
+  getData() {
     this.loadingService.setIsLoading(true);
-    this.studentsService.getStudentsFromService().subscribe({
-      next: (students) => {
+    forkJoin([
+      this.studentsService.getStudentsFromService(),
+      this.courseService.getCourseFromService(),
+    ]).subscribe({
+      next: ([students, courses]) => {
+        //console.log('forkJoin Students:', students);
+        // console.log('forkJoin Courses:', courses);
         this.students = students;
-        console.log('Students:', students);
-      },
-      error: (error) => {
-        console.error('Error:', error);
-      },
-      complete: () => {
-        this.loadingService.setIsLoading(false);
-      }
-    })
-  }
-
-  getCourses(): void {
-    this.loadingService.setIsLoading(true);
-    this.courseService.getCourseFromService().subscribe({
-      next: (courses) => {
-        console.log('Coursesxxxxx:', courses);
         this.coursesList = courses;
+        this.loadingService.setIsLoading(false);
       },
       error: (error) => {
         console.error('Error:', error);
-      },
-      complete: () => {
         this.loadingService.setIsLoading(false);
-      }
+      },
     });
   }
 
@@ -70,35 +64,32 @@ export class StudentListComponent implements OnInit {
     this.loadingService.setIsLoading(true);
     this.studentsService.deleteStudent(student).subscribe({
       next: (students) => {
-        this.students = students;
-        console.log('Students:', students);
+        this.students = [...students];
+        this.loadingService.setIsLoading(false);
       },
       error: (error) => {
         console.error('Error:', error);
-      },
-      complete: () => {
         this.loadingService.setIsLoading(false);
-      }
+      },
     });
   }
 
   showCourseDialog(course: string): void {
-    console.log('course on showCourseDialog:', course);
+    console.log('course on showCourseDialog:***** ', course);
 
     console.log('coursesList:', this.coursesList);
-    const dataCourse = this.coursesList.find(c => c.nombre === course);
+    const dataCourse = this.coursesList.find((c) => c.nombre === course);
 
     console.log('dataCourse:', dataCourse);
 
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '300px',
       height: '400px',
-      data: dataCourse // Pasa el curso encontrado como dato al diálogo
+      data: dataCourse, // Pasa el curso encontrado como dato al diálogo
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed', result);
     });
   }
-
 }

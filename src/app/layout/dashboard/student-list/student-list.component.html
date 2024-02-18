@@ -57,6 +57,7 @@
         <th mat-header-cell *matHeaderCellDef>Curso</th>
         <td mat-cell *matCellDef="let element">
           <button
+            class="button-course"
             (click)="showCourseDialog(element.curso)"
             mat-raised-button color="primary">{{ element.curso }}</button>
         </td>

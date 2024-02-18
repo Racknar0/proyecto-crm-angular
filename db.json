@@ -1,0 +1,626 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "Carlos",
+      "lastName": "Garcia",
+      "email": "carlos@correo.com",
+      "password": "123456",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "firstName": "Juan",
+      "lastName": "Perez",
+      "email": "Juan@correo.com",
+      "password": "123456",
+      "role": "user"
+    }
+  ],
+  "students": [
+    {
+      "id": "549e",
+      "nombre": "Camilo ",
+      "apellido": "Torres",
+      "fullName": {
+        "nombre": "Camilo ",
+        "apellido": "Torres"
+      },
+      "correo": "camilo@gmail.com",
+      "telefono": "3233642951",
+      "curso": "Introduccion a la robotica"
+    },
+    {
+      "id": "59d5",
+      "nombre": "Juan Estevan",
+      "apellido": "Arriaga",
+      "fullName": {
+        "nombre": "Juan Estevan",
+        "apellido": "Arriaga"
+      },
+      "correo": "juanes@gmai.com",
+      "telefono": "3236584",
+      "curso": "Introducción a la Astronomía"
+    },
+    {
+      "id": "69af",
+      "nombre": "Claudio ",
+      "apellido": "Perez",
+      "fullName": {
+        "nombre": "Claudio ",
+        "apellido": "Perez"
+      },
+      "correo": "correo@correo.com",
+      "telefono": "654558",
+      "curso": "Física Cuántica"
+    },
+    {
+      "id": "7b1a",
+      "nombre": "Maria ",
+      "apellido": "Lopez",
+      "fullName": {
+        "nombre": "Maria ",
+        "apellido": "Lopez"
+      },
+      "correo": "maria@correo.com",
+      "telefono": "987654",
+      "curso": "Biología Celular"
+    },
+    {
+      "id": "827c",
+      "nombre": "Pedro ",
+      "apellido": "Garcia",
+      "fullName": {
+        "nombre": "Pedro ",
+        "apellido": "Garcia"
+      },
+      "correo": "pedro@correo.com",
+      "telefono": "321654",
+      "curso": "Lenguaje de Programación Python"
+    },
+    {
+      "id": "937e",
+      "nombre": "Ana Maria",
+      "apellido": "Rodriguez",
+      "fullName": {
+        "nombre": "Ana Maria",
+        "apellido": "Rodriguez"
+      },
+      "correo": "ana@correo.com",
+      "telefono": "456789",
+      "curso": "Historia del Arte"
+    },
+    {
+      "id": "a2fd",
+      "nombre": "Luis ",
+      "apellido": "Martinez",
+      "fullName": {
+        "nombre": "Luis ",
+        "apellido": "Martinez"
+      },
+      "correo": "luis@correo.com",
+      "telefono": "123456",
+      "curso": "Economía Global"
+    },
+    {
+      "id": "b46e",
+      "nombre": "Laura ",
+      "apellido": "Hernandez",
+      "fullName": {
+        "nombre": "Laura ",
+        "apellido": "Hernandez"
+      },
+      "correo": "laura@correo.com",
+      "telefono": "789654",
+      "curso": "Neurociencia Cognitiva"
+    },
+    {
+      "id": "c3da",
+      "nombre": "Elena ",
+      "apellido": "Gomez",
+      "fullName": {
+        "nombre": "Elena ",
+        "apellido": "Gomez"
+      },
+      "correo": "elena@correo.com",
+      "telefono": "321987",
+      "curso": "Diseño Gráfico Avanzado"
+    },
+    {
+      "id": "d8bc",
+      "nombre": "Roberto ",
+      "apellido": "Suarez",
+      "fullName": {
+        "nombre": "Roberto ",
+        "apellido": "Suarez"
+      },
+      "correo": "roberto@correo.com",
+      "telefono": "654123",
+      "curso": "Desarrollo Web Full Stack"
+    },
+    {
+      "id": "e9df",
+      "nombre": "Sofia ",
+      "apellido": "Gutierrez",
+      "fullName": {
+        "nombre": "Sofia ",
+        "apellido": "Gutierrez"
+      },
+      "correo": "sofia@correo.com",
+      "telefono": "789321",
+      "curso": "Análisis de Datos"
+    },
+    {
+      "id": "f7fb",
+      "nombre": "Diego ",
+      "apellido": "Mendoza",
+      "fullName": {
+        "nombre": "Diego ",
+        "apellido": "Mendoza"
+      },
+      "correo": "diego@correo.com",
+      "telefono": "123789",
+      "curso": "Ingeniería Ambiental"
+    },
+    {
+      "id": "8ab9",
+      "nombre": "Julia ",
+      "apellido": "Santos",
+      "fullName": {
+        "nombre": "Julia ",
+        "apellido": "Santos"
+      },
+      "correo": "julia@correo.com",
+      "telefono": "456123",
+      "curso": "Física Cuántica"
+    },
+    {
+      "id": "3b9a",
+      "nombre": "Martin ",
+      "apellido": "Romero",
+      "fullName": {
+        "nombre": "Martin ",
+        "apellido": "Romero"
+      },
+      "correo": "martin@correo.com",
+      "telefono": "789123",
+      "curso": "Programación Avanzada"
+    },
+    {
+      "id": "1a2b",
+      "nombre": "Natalia ",
+      "apellido": "Luna",
+      "fullName": {
+        "nombre": "Natalia ",
+        "apellido": "Luna"
+      },
+      "correo": "natalia@correo.com",
+      "telefono": "321789",
+      "curso": "Economía Global"
+    }
+  ],
+  "teachers": [
+    {
+      "id": "7287",
+      "nombre": "Juan ",
+      "apellido": "Martinez",
+      "edad": 28,
+      "especialidad": "algebra"
+    },
+    {
+      "id": "b030",
+      "nombre": "Pedro",
+      "apellido": "Nieves",
+      "edad": 48,
+      "especialidad": "algebra"
+    },
+    {
+      "id": "3def",
+      "nombre": "Camilo",
+      "apellido": "Torres",
+      "edad": 32,
+      "especialidad": "fisica"
+    },
+    {
+      "id": "e7a1",
+      "nombre": "Ana ",
+      "apellido": "Garcia",
+      "edad": 35,
+      "especialidad": "fisica"
+    },
+    {
+      "id": "b9c2",
+      "nombre": "Luis",
+      "apellido": "Hernandez",
+      "edad": 41,
+      "especialidad": "quimica"
+    },
+    {
+      "id": "8d04",
+      "nombre": "Maria",
+      "apellido": "Lopez",
+      "edad": 37,
+      "especialidad": "quimica"
+    },
+    {
+      "id": "5a9e",
+      "nombre": "Miguel",
+      "apellido": "Gonzalez",
+      "edad": 50,
+      "especialidad": "biologia"
+    },
+    {
+      "id": "1f6b",
+      "nombre": "Elena",
+      "apellido": "Rodriguez",
+      "edad": 43,
+      "especialidad": "biologia"
+    },
+    {
+      "id": "c8d3",
+      "nombre": "Diego",
+      "apellido": "Martinez",
+      "edad": 39,
+      "especialidad": "astronomia"
+    },
+    {
+      "id": "0a12",
+      "nombre": "Laura",
+      "apellido": "Sanchez",
+      "edad": 33,
+      "especialidad": "astronomia"
+    },
+    {
+      "id": "7e24",
+      "nombre": "Javier",
+      "apellido": "Perez",
+      "edad": 45,
+      "especialidad": "geologia"
+    },
+    {
+      "id": "f7b0",
+      "nombre": "Carmen",
+      "apellido": "Alvarez",
+      "edad": 31,
+      "especialidad": "geologia"
+    },
+    {
+      "id": "9c50",
+      "nombre": "Carlos",
+      "apellido": "Gutierrez",
+      "edad": 42,
+      "especialidad": "neurologia"
+    },
+    {
+      "id": "2e4f",
+      "nombre": "Sandra",
+      "apellido": "Diaz",
+      "edad": 38,
+      "especialidad": "neurologia"
+    },
+    {
+      "id": "d318",
+      "nombre": "Jose",
+      "apellido": "Gomez",
+      "edad": 29,
+      "especialidad": "robotica"
+    },
+    {
+      "id": "4cfa",
+      "nombre": "Patricia",
+      "apellido": "Ortega",
+      "edad": 47,
+      "especialidad": "robotica"
+    },
+    {
+      "id": "a5d6",
+      "nombre": "Raul",
+      "apellido": "Fernandez",
+      "edad": 34,
+      "especialidad": "programacion"
+    },
+    {
+      "id": "6b98",
+      "nombre": "Lorena",
+      "apellido": "Jimenez",
+      "edad": 36,
+      "especialidad": "programacion"
+    },
+    {
+      "id": "1b7e",
+      "nombre": "Daniel",
+      "apellido": "Rivas",
+      "edad": 46,
+      "especialidad": "matematicas"
+    },
+    {
+      "id": "e2c3",
+      "nombre": "Raquel",
+      "apellido": "Castillo",
+      "edad": 30,
+      "especialidad": "matematicas"
+    },
+    {
+      "id": "f1a9",
+      "nombre": "Adrian",
+      "apellido": "Serrano",
+      "edad": 44,
+      "especialidad": "filosofia"
+    },
+    {
+      "id": "3d88",
+      "nombre": "Beatriz",
+      "apellido": "Navarro",
+      "edad": 40,
+      "especialidad": "filosofia"
+    },
+    {
+      "id": "9f14",
+      "nombre": "Eva",
+      "apellido": "Iglesias",
+      "edad": 35,
+      "especialidad": "psicologia"
+    },
+    {
+      "id": "7a42",
+      "nombre": "Oscar",
+      "apellido": "Ruiz",
+      "edad": 48,
+      "especialidad": "psicologia"
+    },
+    {
+      "id": "8e65",
+      "nombre": "Monica",
+      "apellido": "Molina",
+      "edad": 37,
+      "especialidad": "historia"
+    },
+    {
+      "id": "5d1f",
+      "nombre": "Roberto",
+      "apellido": "Santos",
+      "edad": 49,
+      "especialidad": "historia"
+    },
+    {
+      "id": "c0a7",
+      "nombre": "Ines",
+      "apellido": "Vargas",
+      "edad": 32,
+      "especialidad": "robotica"
+    },
+    {
+      "id": "f89d",
+      "nombre": "Hugo",
+      "apellido": "Cruz",
+      "edad": 41,
+      "especialidad": "linguistica"
+    },
+    {
+      "id": "6a23",
+      "nombre": "Esther",
+      "apellido": "Gomez",
+      "edad": 38,
+      "especialidad": "literatura"
+    },
+    {
+      "id": "2c9e",
+      "nombre": "Felipe",
+      "apellido": "Flores",
+      "edad": 50,
+      "especialidad": "literatura"
+    }
+  ],
+  "courses": [
+    {
+      "id": "6cf8",
+      "nombre": "Introduccion a la robotica",
+      "descripcion": "Curso introductorio a la robótica, abordando conceptos fundamentales y aplicaciones prácticas.",
+      "duracion": 40,
+      "profesor": {
+        "id": "b030",
+        "nombre": "Pedro",
+        "apellido": "Nieves",
+        "edad": 48,
+        "especialidad": "algebra"
+      },
+      "fechaInicio": "2024-02-21T05:00:00.000Z",
+      "fechaFin": "2024-02-29T05:00:00.000Z"
+    },
+    {
+      "id": "37ab",
+      "nombre": "Programación Avanzada",
+      "descripcion": "Curso avanzado de programación, cubriendo temas de algoritmos y estructuras de datos.",
+      "duracion": 50,
+      "profesor": {
+        "id": "7287",
+        "nombre": "Juan",
+        "apellido": "Martinez",
+        "edad": 28,
+        "especialidad": "programacion"
+      },
+      "fechaInicio": "2024-03-01T05:00:00.000Z",
+      "fechaFin": "2024-03-20T05:00:00.000Z"
+    },
+    {
+      "id": "52ac",
+      "nombre": "Biología Celular",
+      "descripcion": "Curso introductorio a la biología celular, explorando la estructura y función de las células.",
+      "duracion": 30,
+      "profesor": {
+        "id": "3def",
+        "nombre": "Camilo",
+        "apellido": "Torres",
+        "edad": 32,
+        "especialidad": "biologia"
+      },
+      "fechaInicio": "2024-04-05T05:00:00.000Z",
+      "fechaFin": "2024-04-25T05:00:00.000Z"
+    },
+    {
+      "id": "91bd",
+      "nombre": "Introducción a la Inteligencia Artificial",
+      "descripcion": "Curso introductorio a la inteligencia artificial, explorando conceptos y aplicaciones.",
+      "duracion": 45,
+      "profesor": {
+        "id": "3def",
+        "nombre": "Camilo",
+        "apellido": "Torres",
+        "edad": 32,
+        "especialidad": "inteligencia_artificial"
+      },
+      "fechaInicio": "2024-05-10T05:00:00.000Z",
+      "fechaFin": "2024-05-30T05:00:00.000Z"
+    },
+    {
+      "id": "15fb",
+      "nombre": "Historia del Arte",
+      "descripcion": "Curso que analiza la historia y evolución del arte a través de las épocas.",
+      "duracion": 35,
+      "profesor": {
+        "id": "2c9a",
+        "nombre": "Ana",
+        "apellido": "Lopez",
+        "edad": 40,
+        "especialidad": "historia_del_arte"
+      },
+      "fechaInicio": "2024-06-15T05:00:00.000Z",
+      "fechaFin": "2024-07-20T05:00:00.000Z"
+    },
+    {
+      "id": "73ea",
+      "nombre": "Economía Global",
+      "descripcion": "Curso que explora los principios económicos y su aplicación en un contexto globalizado.",
+      "duracion": 40,
+      "profesor": {
+        "id": "4cbf",
+        "nombre": "Laura",
+        "apellido": "Gomez",
+        "edad": 35,
+        "especialidad": "economia"
+      },
+      "fechaInicio": "2024-08-01T05:00:00.000Z",
+      "fechaFin": "2024-08-30T05:00:00.000Z"
+    },
+    {
+      "id": "a52d",
+      "nombre": "Física Cuántica",
+      "descripcion": "Curso avanzado de física, explorando los principios y aplicaciones de la física cuántica.",
+      "duracion": 50,
+      "profesor": {
+        "id": "7f4e",
+        "nombre": "Luis",
+        "apellido": "Garcia",
+        "edad": 42,
+        "especialidad": "fisica"
+      },
+      "fechaInicio": "2024-09-05T05:00:00.000Z",
+      "fechaFin": "2024-09-25T05:00:00.000Z"
+    },
+    {
+      "id": "bc9e",
+      "nombre": "Lenguaje de Programación Python",
+      "descripcion": "Curso enfocado en el lenguaje de programación Python, desde lo básico hasta avanzado.",
+      "duracion": 40,
+      "profesor": {
+        "id": "7287",
+        "nombre": "Juan",
+        "apellido": "Martinez",
+        "edad": 28,
+        "especialidad": "programacion"
+      },
+      "fechaInicio": "2024-10-01T05:00:00.000Z",
+      "fechaFin": "2024-10-20T05:00:00.000Z"
+    },
+    {
+      "id": "26ae",
+      "nombre": "Neurociencia Cognitiva",
+      "descripcion": "Curso que explora los fundamentos y avances en neurociencia cognitiva y su aplicación en la práctica.",
+      "duracion": 45,
+      "profesor": {
+        "id": "6d5b",
+        "nombre": "Maria",
+        "apellido": "Sanchez",
+        "edad": 38,
+        "especialidad": "neurociencia"
+      },
+      "fechaInicio": "2024-11-05T05:00:00.000Z",
+      "fechaFin": "2024-11-25T05:00:00.000Z"
+    },
+    {
+      "id": "e81c",
+      "nombre": "Introducción a la Astronomía",
+      "descripcion": "Curso introductorio a la astronomía, explorando el universo y los cuerpos celestes.",
+      "duracion": 40,
+      "profesor": {
+        "id": "9abe",
+        "nombre": "Elena",
+        "apellido": "Vega",
+        "edad": 45,
+        "especialidad": "astronomia"
+      },
+      "fechaInicio": "2024-12-01T05:00:00.000Z",
+      "fechaFin": "2024-12-20T05:00:00.000Z"
+    },
+    {
+      "id": "d8fb",
+      "nombre": "Ingeniería Ambiental",
+      "descripcion": "Curso que aborda los principios y prácticas de la ingeniería ambiental para la sostenibilidad.",
+      "duracion": 45,
+      "profesor": {
+        "id": "4cbf",
+        "nombre": "Laura",
+        "apellido": "Gomez",
+        "edad": 35,
+        "especialidad": "ingenieria_ambiental"
+      },
+      "fechaInicio": "2025-01-05T05:00:00.000Z",
+      "fechaFin": "2025-01-25T05:00:00.000Z"
+    },
+    {
+      "id": "9a6d",
+      "nombre": "Diseño Gráfico Avanzado",
+      "descripcion": "Curso avanzado de diseño gráfico, explorando técnicas y herramientas modernas.",
+      "duracion": 50,
+      "profesor": {
+        "id": "2c9a",
+        "nombre": "Ana",
+        "apellido": "Lopez",
+        "edad": 40,
+        "especialidad": "diseno_grafico"
+      },
+      "fechaInicio": "2025-02-01T05:00:00.000Z",
+      "fechaFin": "2025-02-20T05:00:00.000Z"
+    },
+    {
+      "id": "67bc",
+      "nombre": "Desarrollo Web Full Stack",
+      "descripcion": "Curso completo de desarrollo web, cubriendo frontend, backend y bases de datos.",
+      "duracion": 60,
+      "profesor": {
+        "id": "7287",
+        "nombre": "Juan",
+        "apellido": "Martinez",
+        "edad": 28,
+        "especialidad": "programacion"
+      },
+      "fechaInicio": "2025-03-01T05:00:00.000Z",
+      "fechaFin": "2025-03-30T05:00:00.000Z"
+    },
+    {
+      "id": "f8e9",
+      "nombre": "Análisis de Datos",
+      "descripcion": "Curso que explora técnicas y herramientas para el análisis de datos y la toma de decisiones.",
+      "duracion": 40,
+      "profesor": {
+        "id": "3def",
+        "nombre": "Camilo",
+        "apellido": "Torres",
+        "edad": 32,
+        "especialidad": "analisis_de_datos"
+      },
+      "fechaInicio": "2025-04-05T05:00:00.000Z",
+      "fechaFin": "2025-04-25T05:00:00.000Z"
+    }
+  ]
+}

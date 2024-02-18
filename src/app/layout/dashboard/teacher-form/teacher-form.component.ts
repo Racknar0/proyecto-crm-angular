@@ -32,10 +32,11 @@ export class TeacherFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = +this.activatedRoute.snapshot.params['id'];
+    const id = this.activatedRoute.snapshot.params['id'];
+    console.log('ID:', id);
+
     if (id) {
-      console.log('ID:', id);
-      console.log('Editando estudiante');
+      console.log('Editando profesor');
       this.isEditing = true;
       this.loadingService.setIsLoading(true);
       this.teacherService.getTeacherById(id).subscribe({

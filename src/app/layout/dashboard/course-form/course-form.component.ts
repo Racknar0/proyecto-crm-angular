@@ -37,7 +37,7 @@ export class CourseFormComponent implements OnInit  {
   }
 
   ngOnInit(): void {
-    const id = +this.activatedRoute.snapshot.params['id'];
+    const id = this.activatedRoute.snapshot.params['id'];
     if (id) {
       console.log('ID:', id);
       console.log('Editando curso');
@@ -48,6 +48,7 @@ export class CourseFormComponent implements OnInit  {
           console.log('course:', course);
           this.courseForm.patchValue({
             ...course,
+            profesor: course?.profesor.nombre,
           });
         },
         error: (error) => {

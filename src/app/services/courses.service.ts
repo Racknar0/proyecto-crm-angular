@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Course } from '../interfaces/courses.interface';
-import { Observable, debounce, debounceTime, delay, of } from 'rxjs';
+import { Observable, debounce, debounceTime, delay, of, tap, switchMap } from 'rxjs';
+import { LoaderService } from './loader.service';
+import { HttpClient } from '@angular/common/http';
 
 /*
 
@@ -53,41 +55,98 @@ let COURSES_DATA: Course[] = [
   providedIn: 'root',
 })
 export class CoursesService {
-  constructor() {}
-
-  getCourseById(id: number | string): Observable<Course | undefined> {
-    return of(COURSES_DATA.find((s) => s.id === +id)).pipe(delay(500));
-  }
+  constructor(
+    private http: HttpClient
+  ) {}
 
   getCourseFromService() {
-    return of(COURSES_DATA).pipe(delay(500));
+    // return of(COURSES_DATA).pipe(delay(500));
+    const courses = this.http
+      .get<Course[]>('http://localhost:3000/courses')
+      .pipe(delay(1000));
+
+    return courses;
+  }
+
+  getCourseById(id: number | string): Observable<Course | undefined> {
+    //return of(COURSES_DATA.find((s) => s.id === +id)).pipe(delay(500));
+    const course = this.http
+      .get<Course>(`http://localhost:3000/courses/${id}`)
+      .pipe(delay(500));
+    console.log('Curso por id:', course);
+    return course;
   }
 
   addCourse(course: Course): Observable<Course[]> {
     // Si el id existe en el arreglo, se actualiza el curso
-    console.log('Course:', course);
-    const courseExists = COURSES_DATA.find((s) => s.id === course.id);
-    if (courseExists) {
-      console.log('Estudiante existe:', courseExists);
-      COURSES_DATA = COURSES_DATA.map((s) =>
-        s.id === course.id
-          ? { ...course, }
-          : s
-      );
+    // console.log('Course:', course);
+    // const courseExists = COURSES_DATA.find((s) => s.id === course.id);
+    // if (courseExists) {
+    //   console.log('Estudiante existe:', courseExists);
+    //   COURSES_DATA = COURSES_DATA.map((s) =>
+    //     s.id === course.id ? { ...course } : s
+    //   );
+    // } else {
+    //   console.log('Estudiante no existe:', courseExists);
+    //   //! Si el id no existe en el arreglo, se agrega el estudiante
+    //   COURSES_DATA.push({
+    //     ...course,
+    //     id: COURSES_DATA.length + 1,
+    //   });
+    // }
+
+    // return this.getCourseFromService().pipe(delay(500));
+
+    if (course.id) {
+      // Estas editando
+      console.log('Curso a editar:', course);
+      const updateOperation = this.http
+        .put(`http://localhost:3000/courses/${course.id}`, course)
+        .pipe(
+          delay(500),
+          // Después de editar el curso, obtener los cursos restantes
+          switchMap(() => this.getCourseFromService()),
+          tap((courses) =>
+            console.log('Cursos restantes después de editar:', courses)
+          ));
+      return updateOperation;
     } else {
-      console.log('Estudiante no existe:', courseExists);
-      //! Si el id no existe en el arreglo, se agrega el estudiante
-      COURSES_DATA.push({
-        ...course,
-        id: COURSES_DATA.length + 1,
-      });
+      // Estas agregando
+      const newCourse = {
+        nombre: course.nombre,
+        descripcion: course.descripcion,
+        duracion: course.duracion,
+        profesor: course.profesor,
+        fechaInicio: course.fechaInicio,
+        fechaFin: course.fechaFin,
+      };
+      const addOperation = this.http
+        .post<Course>('http://localhost:3000/courses', newCourse)
+        .pipe(
+          delay(500),
+          // Después de agregar el curso, obtener los cursos restantes
+          switchMap(() => this.getCourseFromService()),
+          tap((courses) =>
+            console.log('Cursos restantes después de agregar:', courses)
+          ));
+      return addOperation;
     }
 
-    return this.getCourseFromService().pipe(delay(500));
   }
 
   deleteCourse(course: Course): Observable<Course[]> {
-    COURSES_DATA = COURSES_DATA.filter((s) => s.id !== course.id);
-    return this.getCourseFromService().pipe(delay(500));
+    // COURSES_DATA = COURSES_DATA.filter((s) => s.id !== course.id);
+    // return this.getCourseFromService().pipe(delay(500));
+    const deleteOperation = this.http
+      .delete(`http://localhost:3000/courses/${course.id}`)
+      .pipe(
+        delay(500),
+        // Después de borrar el curso, obtener los cursos restantes
+        switchMap(() => this.getCourseFromService()),
+        tap((courses) =>
+          console.log('Cursos restantes después de borrar:', courses)
+        ));
+    return deleteOperation;
+
   }
 }

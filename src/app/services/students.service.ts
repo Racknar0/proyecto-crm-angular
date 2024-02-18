@@ -1,77 +1,100 @@
 import { Injectable } from '@angular/core';
 import { Student } from '../interfaces/student.inteface';
-import { Observable, debounce, debounceTime, delay, of } from 'rxjs';
-
-let STUDENTS_DATA: Student[] = [
-  {
-    id: 1,
-    nombre: 'Camilo Eduardo',
-    apellido: 'Torres Perez',
-    fullName: { nombre: 'Camilo Eduardo', apellido: 'Torres Perez' },
-    correo: 'correo@corre.com',
-    telefono: '3233642951',
-    curso: 'Introducción a Algebra Lineal',
-  },
-  {
-    id: 2,
-    nombre: 'Juan Carlos',
-    apellido: 'Alvarez Alvarez',
-    fullName: { nombre: 'Juan Carlos', apellido: 'Alvarez Alvarez' },
-    correo: 'correo@corre.com',
-    telefono: '3233642951',
-    curso: 'Introducción a Angular',
-  },
-];
+import {
+  Observable,
+  debounce,
+  debounceTime,
+  delay,
+  of,
+  tap,
+  switchMap,
+} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudentsService {
-  constructor() {}
-
-  getStudenById(id: number | string): Observable<Student | undefined> {
-    return of(STUDENTS_DATA.find((s) => s.id === +id)).pipe(delay(500));
-  }
+  constructor(private http: HttpClient) {}
 
   getStudentsFromService() {
-    return of(STUDENTS_DATA).pipe(delay(500));
+    // return of(STUDENTS_DATA).pipe(delay(500));
+    const students = this.http
+      .get<Student[]>('http://localhost:3000/students')
+      .pipe(delay(500));
+    return students;
+  }
+
+  getStudenById(id: number | string): Observable<Student | undefined> {
+    // return of(STUDENTS_DATA.find((s) => s.id === +id)).pipe(delay(500));
+    const student = this.http
+      .get<Student>(`http://localhost:3000/students/${id}`)
+      .pipe(delay(300));
+    console.log('Estudiante por id:', student);
+    return student;
   }
 
   addStudent(student: Student): Observable<Student[]> {
-    // Si el id existe en el arreglo, se actualiza el estudiante
-    console.log('Estudiante:', student);
-    const studentExists = STUDENTS_DATA.find((s) => s.id === student.id);
-    if (studentExists) {
-      console.log('Estudiante existe:', studentExists);
-      STUDENTS_DATA = STUDENTS_DATA.map((s) =>
-        s.id === student.id
-          ? {
-              ...student,
-              fullName: {
-                nombre: student.nombre,
-                apellido: student.apellido,
-              },
-            }
-          : s
-      );
-    } else {
-      console.log('Estudiante no existe:', studentExists);
-      //! Si el id no existe en el arreglo, se agrega el estudiante
-      STUDENTS_DATA.push({
-        ...student,
-        id: STUDENTS_DATA.length + 1,
-        fullName: {
-          nombre: student.nombre,
-          apellido: student.apellido,
-        },
-      });
-    }
+    // Verificar si el estudiante ya existe
+    const nombreCompleto = {
+      nombre: student.nombre,
+      apellido: student.apellido,
+    };
+    student.fullName = nombreCompleto;
 
-    return this.getStudentsFromService().pipe(delay(500));
+    if (student.id) {
+      // Estas editando
+      console.log('Estudiante a editar:', student);
+      const updateOperation = this.http
+        .put(`http://localhost:3000/students/${student.id}`, student)
+        .pipe(
+          delay(500),
+          // Después de editar el estudiante, obtener los estudiantes restantes
+          switchMap(() => this.getStudentsFromService()),
+          tap((students) =>
+            console.log('Estudiantes restantes después de editar:', students)
+          )
+        );
+      return updateOperation;
+    } else {
+      // Estas agregando
+      console.log('Estudiante a agregar:', student);
+      // Remover el id para que el servidor genere uno nuevo
+      const newStudent = {
+        nombre: student.nombre,
+        apellido: student.apellido,
+        fullName: nombreCompleto,
+        correo: student.correo,
+        telefono: student.telefono,
+        curso: student.curso,
+      };
+
+      const addOperation = this.http
+        .post('http://localhost:3000/students', newStudent)
+        .pipe(
+          delay(500),
+          // Después de agregar el estudiante, obtener los estudiantes restantes
+          switchMap(() => this.getStudentsFromService()),
+          tap((students) =>
+            console.log('Estudiantes restantes después de agregar:', students)
+          )
+        );
+      return addOperation;
+    }
   }
 
   deleteStudent(student: Student): Observable<Student[]> {
-    STUDENTS_DATA = STUDENTS_DATA.filter((s) => s.id !== student.id);
-    return this.getStudentsFromService().pipe(delay(500));
+    // Borrar estudiante
+    const deleteOperation = this.http
+      .delete(`http://localhost:3000/students/${student.id}`)
+      .pipe(
+        delay(500),
+        // Después de borrar el estudiante, obtener los estudiantes restantes
+        switchMap(() => this.getStudentsFromService()),
+        tap((students) =>
+          console.log('Estudiantes restantes después de borrar:', students)
+        )
+      );
+    return deleteOperation;
   }
 }
