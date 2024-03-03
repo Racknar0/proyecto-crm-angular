@@ -390,20 +390,6 @@
       "apellido": "Vargas",
       "edad": 32,
       "especialidad": "robotica"
-    },
-    {
-      "id": "f89d",
-      "nombre": "Hugo",
-      "apellido": "Cruz",
-      "edad": 41,
-      "especialidad": "linguistica"
-    },
-    {
-      "id": "6a23",
-      "nombre": "Esther",
-      "apellido": "Gomez",
-      "edad": 38,
-      "especialidad": "literatura"
     }
   ],
   "courses": [

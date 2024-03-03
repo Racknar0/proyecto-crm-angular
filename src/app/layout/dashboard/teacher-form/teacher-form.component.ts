@@ -56,7 +56,7 @@ export class TeacherFormComponent implements OnInit {
     }
   }
 
-  saveStudent() {
+  saveTeacher() {
     let errorsText = '';
 
     // Marcar todos los campos como tocados para mostrar los mensajes de error

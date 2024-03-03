@@ -4,6 +4,9 @@ import { TeachersService } from '../../../core/services/teachers.service';
 import { LoaderService } from '../../../core/services/loader.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { User } from '../../../interfaces/user.interface';
+import { Store } from '@ngrx/store';
+import { TeacherActions } from '../../../store/teachers.store/teachers.actions';
+import { selectTeachers } from '../../../store/teachers.store/teachers.selectors';
 
 @Component({
   selector: 'app-teacher-list',
@@ -20,6 +23,7 @@ export class TeacherListComponent implements OnInit {
     private teachersService: TeachersService,
     private loadingService: LoaderService,
     private authService: AuthService,
+    private store: Store
   ) {
     console.log('TeacherListComponent.constructor');
     this.authService.setUserLoggedByToken().subscribe({
@@ -40,8 +44,20 @@ export class TeacherListComponent implements OnInit {
     this.loadingService.setIsLoading(true);
     this.teachersService.getTeachersFromService().subscribe({
       next: (teachers) => {
-        this.teachers = teachers;
-        console.log('Teachers:', teachers);
+        this.store.dispatch(TeacherActions.setTeachers({ teachers }));
+        //this.teachers = teachers;
+        this.store.select(selectTeachers).subscribe({
+          next: (teachers) => {
+            this.teachers = teachers;
+            console.log('Teachersxxx:', teachers);
+          },
+          error: (error) => {
+            console.error('Error:', error);
+          },
+          complete: () => {
+            this.loadingService.setIsLoading(false);
+          }
+        })
       },
       error: (error) => {
         console.error('Error:', error);
@@ -58,7 +74,8 @@ export class TeacherListComponent implements OnInit {
     this.loadingService.setIsLoading(true);
     this.teachersService.deleteTeacher(teacher).subscribe({
       next: (teachers) => {
-        this.teachers = teachers;
+        // this.teachers = teachers;
+        this.store.dispatch(TeacherActions.setTeachers({ teachers }));
         console.log('Teachers:', teachers);
       },
       error: (error) => {
