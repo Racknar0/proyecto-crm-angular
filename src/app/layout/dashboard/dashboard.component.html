@@ -7,11 +7,28 @@
 
     <mat-nav-list>
       <a mat-list-item routerLink="/dashboard" (click)="drawer.toggle()">Dashboard</a>
-      <a mat-list-item routerLink="/dashboard/student-form" (click)="drawer.toggle()">Registrar Estudiante</a>
+
+      <a
+        *ngIf="userLogged?.role === 'admin'"
+        mat-list-item routerLink="/dashboard/student-form"
+        (click)="drawer.toggle()"
+      > Registrar Estudiante</a>
+
       <a mat-list-item routerLink="/dashboard/courses" (click)="drawer.toggle()">Lista de cursos</a>
-      <a mat-list-item routerLink="/dashboard/course-form" (click)="drawer.toggle()">Registrar Cursos</a>
+
+      <a
+        *ngIf="userLogged?.role === 'admin'"
+        mat-list-item routerLink="/dashboard/course-form"
+        (click)="drawer.toggle()"
+      >Registrar Cursos</a>
+
       <a mat-list-item routerLink="/dashboard/teachers" (click)="drawer.toggle()">Lista de profesores</a>
-      <a mat-list-item routerLink="/dashboard/teacher-form" (click)="drawer.toggle()">Registrar Profesores</a>
+
+      <a
+        *ngIf="userLogged?.role === 'admin'"
+        mat-list-item routerLink="/dashboard/teacher-form"
+        (click)="drawer.toggle()"
+      >Registrar Profesores</a>
       <a mat-list-item (click)="logout()">Cerrar Sesión</a>
 
 

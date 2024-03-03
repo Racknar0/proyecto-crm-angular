@@ -7,6 +7,8 @@ import { DialogComponent } from './dialog/dialog.component';
 import { CoursesService } from '../../../core/services/courses.service';
 import { forkJoin, map } from 'rxjs';
 import { Course } from '../../../interfaces/courses.interface';
+import { AuthService } from '../../../core/services/auth.service';
+import { User } from '../../../interfaces/user.interface';
 
 @Component({
   selector: 'app-student-list',
@@ -14,6 +16,9 @@ import { Course } from '../../../interfaces/courses.interface';
   styleUrl: './student-list.component.scss',
 })
 export class StudentListComponent implements OnInit {
+
+  userLogged : User | undefined;
+
   displayedColumns: string[] = [
     'id',
     'nombre',
@@ -31,8 +36,18 @@ export class StudentListComponent implements OnInit {
     private studentsService: StudentsService,
     private loadingService: LoaderService,
     private courseService: CoursesService,
+    private authService: AuthService,
     public dialog: MatDialog
-  ) {}
+  ) {
+    this.authService.setUserLoggedByToken().subscribe({
+      next: (user) => {
+        this.userLogged = user[0];
+      },
+      error: (error) => {
+        console.error('Error:', error);
+      },
+    });
+  }
 
   ngOnInit(): void {
     this.getData();

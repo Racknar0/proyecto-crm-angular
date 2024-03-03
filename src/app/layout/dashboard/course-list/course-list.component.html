@@ -2,6 +2,7 @@
   <p class="text-center mt-4 fw-bold">LISTADO DE CURSOS</p>
 
   <a
+    *ngIf="userLogged?.role === 'admin'"
     mat-raised-button
     color="primary"
     class="d-flex align-items-center justify-content-center m-auto mt-4 mb-4 w-75"
@@ -66,12 +67,15 @@
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let element">
           <button
+            *ngIf="userLogged?.role === 'admin'"
             mat-button
             [routerLink]="['/dashboard/course-form', element.id]"
           >
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-button (click)="deleteCourse(element)">
+          <button
+            *ngIf="userLogged?.role === 'admin'"
+            mat-button (click)="deleteCourse(element)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>

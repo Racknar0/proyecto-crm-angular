@@ -147,6 +147,14 @@ export class CoursesService {
           console.log('Cursos restantes después de borrar:', courses)
         ));
     return deleteOperation;
+  }
 
+
+  getCoursesByTeacherId(teacherId: number): Observable<Course[]> {
+    // return of(COURSES_DATA.filter((s) => s.profesor.id === teacherId)).pipe(delay(500));
+    const courses = this.http
+      .get<Course[]>(`http://localhost:3000/courses?profesor.id=${teacherId}`)
+      .pipe(delay(1000));
+    return courses;
   }
 }

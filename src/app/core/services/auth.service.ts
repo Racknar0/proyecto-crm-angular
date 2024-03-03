@@ -2,11 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { simpleAlert, simpleAlertWithTimer } from '../../utils/alerts';
+import { User } from '../../interfaces/user.interface';
+import { Observable, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  public userLogged : User | undefined;
 
   constructor(
     private http: HttpClient,
@@ -18,10 +22,13 @@ export class AuthService {
     // Setear el token en el usuario con put
     const token = Math.random().toString(36).substring(2);
     try {
-      const userUpdated = await this.http.put('http://localhost:3000/users/' + user.id, { ...user, token }).toPromise();
-      console.log('Usuario actualizado:', userUpdated);
+      const userUpdated = await this.http.put<User>('http://localhost:3000/users/' + user.id, { ...user, token }).toPromise();
       localStorage.setItem('token', token);
       localStorage.setItem('email_user', email);
+      if (userUpdated) {
+        this.userLogged = userUpdated;
+      }
+      console.log('Usuario actualizado:', this.userLogged);
     } catch (error) {
       console.error('Error al actualizar el usuario:', error);
     }
@@ -64,7 +71,15 @@ export class AuthService {
     }
   }
 
-
+  setUserLoggedByToken() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const userLoggedByToken = this.http.get<User[]>('http://localhost:3000/users?token=' + token)
+      return userLoggedByToken;
+    } else {
+      return of();
+    }
+  }
 
   login(email: string, password: string) {
     if (!email || !password) {

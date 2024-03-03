@@ -4,17 +4,17 @@
       "id": "1",
       "firstName": "Carlos",
       "lastName": "Garcia",
-      "email": "carlos@correo.com",
-      "password": "123456",
+      "email": "admin@correo.com",
+      "password": "qqqqqq",
       "role": "admin",
-      "token": "gcgfunqrkwa"
+      "token": "8mhqlkmyk27"
     },
     {
       "id": "2",
       "firstName": "Juan",
       "lastName": "Perez",
-      "email": "Juan@correo.com",
-      "password": "123456",
+      "email": "user@correo.com",
+      "password": "qqqqqq",
       "role": "user",
       "token": ""
     }
@@ -404,20 +404,6 @@
       "apellido": "Gomez",
       "edad": 38,
       "especialidad": "literatura"
-    },
-    {
-      "id": "2c9e",
-      "nombre": "Felipe",
-      "apellido": "Flores",
-      "edad": 50,
-      "especialidad": "literatura"
-    },
-    {
-      "id": "bb4e",
-      "nombre": "AAAAAAAAAAAA",
-      "apellido": "Sint corru",
-      "edad": 57,
-      "especialidad": "astronomia"
     }
   ],
   "courses": [
