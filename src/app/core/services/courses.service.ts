@@ -3,6 +3,7 @@ import { Course } from '../../interfaces/courses.interface';
 import { Observable, debounce, debounceTime, delay, of, tap, switchMap } from 'rxjs';
 import { LoaderService } from './loader.service';
 import { HttpClient } from '@angular/common/http';
+import { StudentsService } from './students.service';
 
 /*
 
@@ -56,7 +57,9 @@ let COURSES_DATA: Course[] = [
 })
 export class CoursesService {
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private loaderService: LoaderService,
+    private studentsService: StudentsService
   ) {}
 
   getCourseFromService() {
@@ -135,18 +138,50 @@ export class CoursesService {
   }
 
   deleteCourse(course: Course): Observable<Course[]> {
-    // COURSES_DATA = COURSES_DATA.filter((s) => s.id !== course.id);
-    // return this.getCourseFromService().pipe(delay(500));
-    const deleteOperation = this.http
-      .delete(`http://localhost:3000/courses/${course.id}`)
-      .pipe(
-        delay(500),
-        // Después de borrar el curso, obtener los cursos restantes
-        switchMap(() => this.getCourseFromService()),
-        tap((courses) =>
-          console.log('Cursos restantes después de borrar:', courses)
-        ));
-    return deleteOperation;
+    // // COURSES_DATA = COURSES_DATA.filter((s) => s.id !== course.id);
+    // // return this.getCourseFromService().pipe(delay(500));
+    // const deleteOperation = this.http
+    //   .delete(`http://localhost:3000/courses/${course.id}`)
+    //   .pipe(
+    //     delay(500),
+    //     // Después de borrar el curso, obtener los cursos restantes
+    //     switchMap(() => this.getCourseFromService()),
+    //     tap((courses) =>
+    //       console.log('Cursos restantes después de borrar:', courses)
+    //     ));
+    // return deleteOperation;
+
+    let courseHasStudents: boolean;
+    this.loaderService.setIsLoading(true);
+
+    // Validar si el profesor tiene cursos asociados
+    return this.studentsService.getStudentsByCourseName(course.nombre).pipe(
+      tap(students => {
+        if (students.length > 0) {
+          courseHasStudents = true;
+          console.log('El curso tiene estudiantes asociados:', students);
+        } else {
+          courseHasStudents = false;
+          console.log('El curso no tiene estudiantes asociados');
+        }
+      }),
+      switchMap(courses => {
+        if (courseHasStudents) {
+          alert('El curso tiene estudiantes asociados, no se puede eliminar hasta que no elimines los estudiantes asociados');
+          return this.getCourseFromService();
+        } else {
+          return this.http.delete(`http://localhost:3000/courses/${course.id}`).pipe(
+            delay(500),
+            switchMap(() => this.getCourseFromService())
+          );
+        }
+      }),
+      tap(teachers => {
+        console.log('Cursos restantes después de eliminar:', teachers);
+        this.loaderService.setIsLoading(false);
+      })
+    );
+
   }
 
 

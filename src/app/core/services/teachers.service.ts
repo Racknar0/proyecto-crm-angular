@@ -87,7 +87,7 @@ export class TeachersService {
       }),
       switchMap(courses => {
         if (teacherHasCourses) {
-          alert('El profesor tiene cursos asociados, no se puede eliminar');
+          alert('El profesor tiene cursos asociados, no se puede eliminar hasta que no elimines los cursos asociados');
           return this.getTeachersFromService();
         } else {
           return this.http.delete(`http://localhost:3000/teachers/${teacher.id}`).pipe(

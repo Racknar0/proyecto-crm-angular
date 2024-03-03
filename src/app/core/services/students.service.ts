@@ -97,4 +97,12 @@ export class StudentsService {
       );
     return deleteOperation;
   }
+
+  getStudentsByCourseName(courseName: string): Observable<Student[]> {
+    // return of(STUDENTS_DATA.filter((s) => s.curso === courseName)).pipe(delay(500));
+    const students = this.http
+      .get<Student[]>(`http://localhost:3000/students?curso=${courseName}`)
+      .pipe(delay(500));
+    return students;
+  }
 }
