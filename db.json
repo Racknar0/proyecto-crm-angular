@@ -7,7 +7,7 @@
       "email": "admin@correo.com",
       "password": "qqqqqq",
       "role": "admin",
-      "token": "8mhqlkmyk27"
+      "token": "j81zryrmt2o"
     },
     {
       "id": "2",
@@ -139,18 +139,6 @@
       "correo": "roberto@correo.com",
       "telefono": "654123",
       "curso": "Desarrollo Web Full Stack"
-    },
-    {
-      "id": "e9df",
-      "nombre": "Sofia ",
-      "apellido": "Gutierrez",
-      "fullName": {
-        "nombre": "Sofia ",
-        "apellido": "Gutierrez"
-      },
-      "correo": "sofia@correo.com",
-      "telefono": "789321",
-      "curso": "Análisis de Datos"
     },
     {
       "id": "f7fb",
